@@ -31,15 +31,15 @@ with col2:
 
 selected_city=st.selectbox("Select venue",sorted(cities))
 
-target=st.number_input("Target")
+target=st.number_input("Target",min_value=0,step=1)
 
 col3,col4,col5=st.columns(3)
 with col3:
-    score=st.number_input("Score")
+    score=st.number_input("Score",min_value=0,step=1)
 with col4:
-    overs=st.number_input("Overs")
+    overs=st.number_input("Overs",min_value=1,max_value=19,step=1)
 with col5:
-    wickets=st.number_input("Wickets")
+    wickets=st.number_input("Wickets",min_value=0,max_value=9,step=1)
 
 if st.button("Predict Probability"):
     runs_left=target-score
@@ -56,11 +56,11 @@ if st.button("Predict Probability"):
 
 
     res=model.predict_proba(df)
-    loss=res[0][0]
-    win=res[0][1]
+    win1=res[0][0]
+    win2=res[0][1]
 
-    st.header(batting_team+"-"+str(round(loss*100,1))+"%")
-    st.header(bowling_team+"-"+str(round(win*100,1))+"%")
+    st.header(batting_team+"-"+str(round(win2*100,1))+"%")
+    st.header(bowling_team+"-"+str(round(win1*100,1))+"%")
 
 
 
