@@ -22,7 +22,7 @@ cities=['Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
 
 col1,col2= st.columns(2)
 
-model=pickle.load(open("model.pkl","rb"))
+model=pickle.load(open("model1.pkl","rb"))
 
 with col1:
     batting_team=st.selectbox("Select the batting team",sorted(teams))
